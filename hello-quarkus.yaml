@@ -1,0 +1,32 @@
+metadata:
+  name: quarkus-demo
+projects:
+  - name: hello-quarkus
+    source:
+      location: 'https://github.com/mostmark/hello-quarkus.git'
+      type: git
+      branch: master
+components:
+  - id: redhat/java8/latest
+    type: chePlugin
+  - mountSources: true
+    memoryLimit: 512Mi
+    type: dockerimage
+    volumes:
+      - name: m2
+        containerPath: /home/jboss/.m2
+    alias: maven
+    image: 'registry.redhat.io/codeready-workspaces/stacks-java-rhel8:2.0'
+    env:
+      - value: /home/jboss/.m2
+        name: MAVEN_CONFIG
+      - value: >-
+          -XX:MaxRAMPercentage=50.0 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10
+          -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4
+          -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true
+          -Xms20m -Djava.security.egd=file:/dev/./urandom
+          -Duser.home=/home/jboss
+        name: JAVA_OPTS
+      - value: $(JAVA_OPTS)
+        name: MAVEN_OPTS
+apiVersion: 1.0.0
