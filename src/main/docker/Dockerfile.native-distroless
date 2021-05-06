@@ -7,11 +7,11 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native-distroless -t quarkus/hi-quarkus .
+# docker build -f src/main/docker/Dockerfile.native-distroless -t quarkus/hello-quarkus .
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/hi-quarkus
+# docker run -i --rm -p 8080:8080 quarkus/hello-quarkus
 #
 ###
 FROM quay.io/quarkus/quarkus-distroless-image:1.0
