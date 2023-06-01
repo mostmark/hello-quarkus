@@ -1,3 +1,3 @@
 # hello-quarkus
 
-mvn clean package -Dquarkus.kubernetes.deploy=true -DskipTests
+mvn clean package -Dquarkus.kubernetes.deploy=true
