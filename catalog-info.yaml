@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: hello-quarkus
+  annotations:
+    github.com/project-slug: mostmark/hello-quarkus
+spec:
+  type: other
+  lifecycle: unknown
+  owner: rhdh
