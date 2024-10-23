@@ -1,5 +1,7 @@
 package com.test;
 
+import java.util.Date;
+
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.ws.rs.GET;
@@ -18,6 +20,6 @@ public class HelloResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return "Hello " + name + " in " + environment;
+        return "Hello " + name + " in " + environment + ", the time is " + new Date();
     }
 }
