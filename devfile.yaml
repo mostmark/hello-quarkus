@@ -1,0 +1,27 @@
+schemaVersion: 2.3.0
+metadata:
+  name: hello-quarkus
+components:
+   - name: dev-tooling
+     container:
+       image: quay.io/mostmark/java-tools:latest
+       endpoints:
+         - name: http-8080
+           targetPort: 8080
+commands:
+  - id: install
+    exec:
+      commandLine: mvn package
+      component: dev-tooling
+      workingDir: ${PROJECT_SOURCE}
+      group:
+        isDefault: true
+        kind: build
+  - id: run
+    exec:
+      commandLine: quarkus run
+      component: dev-tooling
+      workingDir: ${PROJECT_SOURCE}
+      group:
+        isDefault: true
+        kind: run
